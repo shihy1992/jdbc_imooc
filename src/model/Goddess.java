@@ -11,6 +11,25 @@ import java.util.Date;
  */
 public class Goddess {
     private Integer id;
+
+    @Override
+    public String toString() {
+        return "Goddess{" +
+                "id=" + id +
+                ", user_name='" + user_name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", birthday=" + birthday +
+                ", email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", create_user='" + create_user + '\'' +
+                ", create_date=" + create_date +
+                ", update_user='" + update_user + '\'' +
+                ", update_date=" + update_date +
+                ", isdel=" + isdel +
+                '}';
+    }
+
     private String user_name;
     private Integer age;
     private Integer sex;

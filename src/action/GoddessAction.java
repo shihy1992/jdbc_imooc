@@ -3,7 +3,7 @@ package action;
 import dao.GoddessDao;
 import model.Goddess;
 
-import java.util.List;
+import java.util.Date;
 
 /**
  * @ClassName: GoddessAction.java
@@ -15,9 +15,25 @@ import java.util.List;
 public class GoddessAction {
     public static void main(String[] args) throws Exception{
         GoddessDao g = new GoddessDao();
-        List<Goddess> gs = g.query();
+      /*  List<Goddess> gs = g.query();
         for (Goddess goddess : gs) {
             System.out.println(goddess.getUser_name()+goddess.getAge());
-        }
+        }*/
+        Goddess g1 = new Goddess();
+        g1.setUser_name("–°√¿");
+        g1.setAge(21);
+        g1.setSex(1);
+        g1.setBirthday(new Date());
+        g1.setEmail("xiaoxia@imooc.com");
+        g1.setMobile("14752256731");
+        g1.setUpdate_user("ADMIN");
+        g1.setIsdel(1);
+        Goddess g2=g.get(5);
+        System.out.println(g2.toString());
+//        g1.setId(3);
+
+//        g.delGoddess(3);
+//        g.updateGoddess(g1);
+//        g.addGoddess(g1);
     }
 }
