@@ -3,7 +3,9 @@ package action;
 import dao.GoddessDao;
 import model.Goddess;
 
-import java.util.Date;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: GoddessAction.java
@@ -13,27 +15,35 @@ import java.util.Date;
  * @date 2019年01月23日
  */
 public class GoddessAction {
-    public static void main(String[] args) throws Exception{
-        GoddessDao g = new GoddessDao();
-      /*  List<Goddess> gs = g.query();
-        for (Goddess goddess : gs) {
-            System.out.println(goddess.getUser_name()+goddess.getAge());
-        }*/
-        Goddess g1 = new Goddess();
-        g1.setUser_name("小美");
-        g1.setAge(21);
-        g1.setSex(1);
-        g1.setBirthday(new Date());
-        g1.setEmail("xiaoxia@imooc.com");
-        g1.setMobile("14752256731");
-        g1.setUpdate_user("ADMIN");
-        g1.setIsdel(1);
-        Goddess g2=g.get(5);
-        System.out.println(g2.toString());
-//        g1.setId(3);
+    public void add(Goddess goddess) throws Exception{
+        GoddessDao dao=new GoddessDao();
+        goddess.setSex(1);
+        goddess.setCreate_user("ADMIN");
+        goddess.setUpdate_user("ADMIN");
+        goddess.setIsdel(0);
+        dao.addGoddess(goddess);
+    }
 
-//        g.delGoddess(3);
-//        g.updateGoddess(g1);
-//        g.addGoddess(g1);
+    public Goddess get(Integer id) throws SQLException {
+        GoddessDao dao=new GoddessDao();
+        return dao.get(id);
+    }
+
+    public void edit(Goddess goddess) throws Exception{
+        GoddessDao dao=new GoddessDao();
+        dao.updateGoddess(goddess);
+    }
+    public void del(Integer id) throws SQLException{
+        GoddessDao dao=new GoddessDao();
+        dao.delGoddess(id);
+    }
+
+    public List<Goddess>  query() throws Exception{
+        GoddessDao dao=new GoddessDao();
+        return dao.query();
+    }
+    public List<Goddess> query(List<Map<String, Object>> params) throws Exception{
+        GoddessDao dao=new GoddessDao();
+        return dao.query(params);
     }
 }
